@@ -15,13 +15,17 @@ $(function () {
             var password = $("#inputPassword").val();
             var encodedPassword = hex_sha1(password);
             var finalPassword = hex_sha1(encodedPassword + randomStr);
-            console.log("finalPassword:" + finalPassword);
             var loginResponse = dataService.post("user/login", {
                 userName: userName,
                 password: finalPassword
             });
             loginResponse.success(function (data) {
-                console.log(data);
+                var loginStatus = data.result;
+                if (loginStatus) {
+                	alert("登录成功");
+                } else {
+                	alert("登录失败");
+                }
             });
         });
 

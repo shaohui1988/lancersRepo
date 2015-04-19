@@ -70,6 +70,7 @@ public class LoginAction extends ActionSupport {
 		result = new JSONObject();
 		if (isPassed) {
 			result.put("result", 1);
+			session.setAttribute("online", true);
 		} else {
 			result.put("result", 0);
 		}
