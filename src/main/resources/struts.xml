@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant><!-- 动态方法调用 -->
+	<constant name="struts.action.extension" value="do,action,"></constant><!-- action扩展名 -->
+	<constant name="struts.serve.static.browserCache" value="false"></constant><!-- 是否开启浏览器缓存，建议开发阶段关闭 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant><!-- 修改struts.xml文件后自动重新加载该文件 -->
+	<constant name="struts.devMode" value="true"></constant><!-- 开发模式，是否在浏览器端显示更多的错误信息 -->
+	<constant name="struts.multipart.maxSize" value="10701096"></constant><!-- 设置上传文件最大字节数 -->
+	<constant name="struts.ui.theme" value="simple"></constant><!-- 默认的视图主题 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant><!-- 设置OGNL访问静态成员 -->
+	<!-- <constant name="struts.i18n.encoding" value="utf-8"></constant> -->
+	<!--constant name="struts.custom.i18n.resources" value=""></constant>  --><!-- 设置国际化全局资源文件 -->
+	
+	<package name="user" namespace="/user" extends="json-default">
+		<action name="getRandomStr" class="com.shaohui.action.LoginAction" method="random">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="login" class="com.shaohui.action.LoginAction" method="login">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>
