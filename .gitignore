@@ -2,3 +2,7 @@ target
 work
 src/test
 src\main\webapp\WEB-INF\classes
+.classpath
+.project
+.tomcatplugin
+.settings
