@@ -2,7 +2,7 @@ package com.shaohui.DAO;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import com.shaohui.modal.User;
+import com.shaohui.modal.UserVO;
 
 public class UserDAO {
 	
@@ -19,11 +19,11 @@ public class UserDAO {
 		return userDAO;
 	}
 	
-	public User getUserPassword(String userName) {
+	public UserVO getUserPassword(String userName) {
 		if (!userName.equals("shaohui")) {
 			return null;
 		}
-		User user = new User();
+		UserVO user = new UserVO();
 		user.setName("shaohui");
 		String plainPassword = "123456";
 		String encodedPassword = DigestUtils.sha1Hex(plainPassword);

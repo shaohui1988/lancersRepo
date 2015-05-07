@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.shaohui.DAO.UserDAO;
-import com.shaohui.modal.User;
+import com.shaohui.modal.UserVO;
 
 /**
  * 
@@ -25,7 +25,7 @@ public class LoginService {
 	 * 校验密码
 	 */
 	public static Boolean validPassword(String userName, String enteredPassword, String randomStr) {
-		User user = UserDAO.getInstance().getUserPassword(userName);
+		UserVO user = UserDAO.getInstance().getUserPassword(userName);
 		if (user == null) {
 			return false;
 		}
