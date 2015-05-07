@@ -4,7 +4,7 @@
 $(function () {
 
     /**
-     * ��¼
+     * 登录
      */
     function login() {
         var dataResponse = dataService.post("user/getRandomStr");
