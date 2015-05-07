@@ -2,6 +2,7 @@ package com.shaohui.modal;
 
 import java.util.Date;
 
+import com.shaohui.commonenum.ChineseZodiacEnum;
 import com.shaohui.commonenum.ConstellationEnum;
 import com.shaohui.commonenum.GenderEnum;
 
@@ -83,9 +84,19 @@ public class UserVO {
 	private String street;
 	
 	/**
+	 * 生肖
+	 */
+	private ChineseZodiacEnum chineseZodiac;
+	
+	/**
 	 * 星座
 	 */
 	private ConstellationEnum constellation;
+	
+	/**
+	 * 血型
+	 */
+	private String bloodType;
 	
 	public String getName() {
 		return name;
@@ -102,6 +113,4 @@ public class UserVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
 }

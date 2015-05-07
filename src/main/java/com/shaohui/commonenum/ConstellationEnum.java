@@ -1,5 +1,6 @@
 package com.shaohui.commonenum;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,6 +85,9 @@ public enum ConstellationEnum {
      */
     private String chineseName;
     
+    /**
+     * 星座的中英对照
+     */
     private static final Map<String, ConstellationEnum> CE = new HashMap<String, ConstellationEnum>(){{
         put("白羊座", ARIES);
         put("金牛座", TAURUS);
@@ -126,7 +130,7 @@ public enum ConstellationEnum {
      * @author shaohui
      * @date 2015年5月7日 下午7:29:46
      */
-    public static ConstellationEnum getConstellationFromChinese(String chineseName) {
+    public static ConstellationEnum getFromChinese(String chineseName) {
         if (StringUtils.isBlank(chineseName)) {
             return null;
         }
@@ -135,5 +139,18 @@ public enum ConstellationEnum {
             return null;
         }
         return length == 2 ? CE.get(chineseName + "座") : CE.get(chineseName);
+    }
+    
+    /**
+     * 
+     * 根据日期获取生肖
+     *
+     * @return
+     * 
+     * @author shaohui
+     * @date 2015年5月7日 下午7:59:57
+     */
+    public static ConstellationEnum getByDate(Date date) {
+        return null;
     }
 }
