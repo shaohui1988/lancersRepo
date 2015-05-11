@@ -35,4 +35,8 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserVO>
         }
 		return user;
 	}
+    
+    public static void main(String[] args) {
+        System.out.println(-1 % 12);
+    }
 }
