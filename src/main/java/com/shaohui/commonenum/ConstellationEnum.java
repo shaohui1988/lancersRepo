@@ -1,5 +1,6 @@
 package com.shaohui.commonenum;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -151,6 +152,10 @@ public enum ConstellationEnum {
      * @date 2015年5月7日 下午7:59:57
      */
     public static ConstellationEnum getByDate(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(calendar.DAY_OF_MONTH);
         return null;
     }
 }
