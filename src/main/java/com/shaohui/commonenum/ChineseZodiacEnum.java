@@ -122,9 +122,50 @@ public enum ChineseZodiacEnum {
         calendar.setTime(date);
         int year = calendar.get(Calendar.YEAR);
         
-        //公元1年是鸡
+        //公元4年是鼠
+        int remainder = year % 12;
         
-        return null;
+        ChineseZodiacEnum chineseZodiac = null;
+        switch(remainder) {
+            case 0 : 
+                chineseZodiac = ChineseZodiacEnum.MOUSE;
+                break;
+            case 1 : 
+                chineseZodiac = ChineseZodiacEnum.COW;
+                break;
+            case 2 : 
+                chineseZodiac = ChineseZodiacEnum.TIGER;
+                break;
+            case 3 : 
+                chineseZodiac = ChineseZodiacEnum.RABBIT;
+                break;
+            case 4 : 
+                chineseZodiac = ChineseZodiacEnum.DRAGON;
+                break;
+            case 5 : 
+                chineseZodiac = ChineseZodiacEnum.SNAKE;
+                break;
+            case 6 : 
+                chineseZodiac = ChineseZodiacEnum.HORSE;
+                break;
+            case 7 : 
+                chineseZodiac = ChineseZodiacEnum.SHEEP;
+                break;
+            case 8 : 
+                chineseZodiac = ChineseZodiacEnum.MONKEY;
+                break;
+            case 9 : 
+                chineseZodiac = ChineseZodiacEnum.CHICKEN;
+                break;
+            case 10 : 
+                chineseZodiac = ChineseZodiacEnum.DOG;
+                break;
+            case 11 : 
+                chineseZodiac = ChineseZodiacEnum.PIG;
+                break;
+        }
+        
+        return chineseZodiac;
     }
     
 }
