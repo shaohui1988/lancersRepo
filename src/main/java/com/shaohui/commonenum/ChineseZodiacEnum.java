@@ -1,14 +1,11 @@
 package com.shaohui.commonenum;
 
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
-
 
 /**
  * 
@@ -22,71 +19,66 @@ import org.apache.commons.lang3.time.DateUtils;
  * @date 2015年5月7日 下午7:41:19
  */
 public enum ChineseZodiacEnum {
-    
-    MOUSE("鼠"),
-    
-    COW("牛"),
-    
-    TIGER("虎"),
-    
-    RABBIT("兔"),
-    
-    DRAGON("龙"),
-    
-    SNAKE("蛇"),
-    
-    HORSE("马"),
-    
-    SHEEP("羊"),
-    
-    MONKEY("猴"),
-    
-    CHICKEN("鸡"),
-    
-    DOG("狗"),
-    
-    PIG("猪");
-    
+
+    MOUSE("鼠", 1),
+
+    COW("牛", 2),
+
+    TIGER("虎", 3),
+
+    RABBIT("兔", 4),
+
+    DRAGON("龙", 5),
+
+    SNAKE("蛇", 6),
+
+    HORSE("马", 7),
+
+    SHEEP("羊", 8),
+
+    MONKEY("猴", 9),
+
+    CHICKEN("鸡", 10),
+
+    DOG("狗", 11),
+
+    PIG("猪", 12);
+
     /**
      * 中文名称
      */
     private String chineseName;
-    
+
+    /**
+     * 序号
+     */
+    private Integer index;
+
     /**
      * 生肖的中-英对照
      */
-    private static final Map<String, ChineseZodiacEnum> CE = new HashMap<String, ChineseZodiacEnum>(){{
-        put("鼠", MOUSE);
-        put("牛", COW);
-        put("虎", TIGER);
-        put("兔", RABBIT);
-        put("龙", DRAGON);
-        put("蛇", SNAKE);
-        put("马", HORSE);
-        put("羊", SHEEP);
-        put("猴", MONKEY);
-        put("鸡", CHICKEN);
-        put("狗", DOG);
-        put("猪", PIG);
-    }};
-    
-    private ChineseZodiacEnum(String chineseName) {
+    private static final Map<String, ChineseZodiacEnum> CE = new HashMap<String, ChineseZodiacEnum>() {
+        {
+            put("鼠", MOUSE);
+            put("牛", COW);
+            put("虎", TIGER);
+            put("兔", RABBIT);
+            put("龙", DRAGON);
+            put("蛇", SNAKE);
+            put("马", HORSE);
+            put("羊", SHEEP);
+            put("猴", MONKEY);
+            put("鸡", CHICKEN);
+            put("狗", DOG);
+            put("猪", PIG);
+        }
+    };
+
+    private ChineseZodiacEnum(String chineseName, Integer index) {
         this.chineseName = chineseName;
+        this.index = index;
     }
-    
-    /**
-     * 
-     * 获取中文名称
-     *
-     * @return 中文名称
-     * 
-     * @author shaohui
-     * @date 2015年5月7日 下午7:48:56
-     */
-    public String getChineseName() {
-        return this.chineseName;
-    }
-    
+
     /**
      * 
      * 根据中文名获取生肖
@@ -97,13 +89,63 @@ public enum ChineseZodiacEnum {
      * @author shaohui
      * @date 2015年5月7日 下午7:57:48
      */
-    public static ChineseZodiacEnum getFromChinese(String chineseName) {
+    public static ChineseZodiacEnum getByChinese(String chineseName) {
         if (StringUtils.isBlank(chineseName) || chineseName.length() != 1) {
             return null;
         }
         return CE.get(chineseName);
     }
-    
+
+    /**
+     * 根据索引获取生肖
+     * 
+     * @param index
+     *            索引
+     * @return
+     */
+    public static ChineseZodiacEnum getByIndex(Integer index) {
+        ChineseZodiacEnum zodia = null;
+        switch (index) {
+        case 1:
+            zodia = MOUSE;
+            break;
+        case 2:
+            zodia = COW;
+            break;
+        case 3:
+            zodia = TIGER;
+            break;
+        case 4:
+            zodia = RABBIT;
+            break;
+        case 5:
+            zodia = DRAGON;
+            break;
+        case 6:
+            zodia = SNAKE;
+            break;
+        case 7:
+            zodia = HORSE;
+            break;
+        case 8:
+            zodia = SHEEP;
+            break;
+        case 9:
+            zodia = MONKEY;
+            break;
+        case 10:
+            zodia = CHICKEN;
+            break;
+        case 11:
+            zodia = DOG;
+            break;
+        case 12:
+            zodia = PIG;
+            break;
+        }
+        return zodia;
+    }
+
     /**
      * 
      * 根据日期返回生肖
@@ -121,51 +163,41 @@ public enum ChineseZodiacEnum {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int year = calendar.get(Calendar.YEAR);
-        
-        //公元4年是鼠
-        int remainder = year % 12;
-        
-        ChineseZodiacEnum chineseZodiac = null;
-        switch(remainder) {
-            case 0 : 
-                chineseZodiac = ChineseZodiacEnum.MOUSE;
-                break;
-            case 1 : 
-                chineseZodiac = ChineseZodiacEnum.COW;
-                break;
-            case 2 : 
-                chineseZodiac = ChineseZodiacEnum.TIGER;
-                break;
-            case 3 : 
-                chineseZodiac = ChineseZodiacEnum.RABBIT;
-                break;
-            case 4 : 
-                chineseZodiac = ChineseZodiacEnum.DRAGON;
-                break;
-            case 5 : 
-                chineseZodiac = ChineseZodiacEnum.SNAKE;
-                break;
-            case 6 : 
-                chineseZodiac = ChineseZodiacEnum.HORSE;
-                break;
-            case 7 : 
-                chineseZodiac = ChineseZodiacEnum.SHEEP;
-                break;
-            case 8 : 
-                chineseZodiac = ChineseZodiacEnum.MONKEY;
-                break;
-            case 9 : 
-                chineseZodiac = ChineseZodiacEnum.CHICKEN;
-                break;
-            case 10 : 
-                chineseZodiac = ChineseZodiacEnum.DOG;
-                break;
-            case 11 : 
-                chineseZodiac = ChineseZodiacEnum.PIG;
-                break;
-        }
-        
-        return chineseZodiac;
+
+        // 公元-1年是猴年，公元1年是鸡，公元4年是鼠，以此计算生肖
+        return getByIndex(Math.abs(year - 4) % 12 + 1);
     }
     
+    /**
+     * 
+     * 获取中文名称
+     *
+     * @return 中文名称
+     * 
+     * @author shaohui
+     * @date 2015年5月7日 下午7:48:56
+     */
+    public String getChineseName() {
+        return this.chineseName;
+    }
+
+    /**
+     * 获取序号
+     * 
+     * @return
+     */
+    public Integer getIndex() {
+        return this.index;
+    }
+    
+    @Override
+    public String toString() {
+        return this.chineseName;
+    }
+    
+    public static void main(String[] args) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2015);
+        System.out.println(ChineseZodiacEnum.getFromDate(calendar.getTime()));
+    }
 }

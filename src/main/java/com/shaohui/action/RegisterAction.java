@@ -17,7 +17,12 @@ import com.shaohui.modal.UserVO;
  */
 public class RegisterAction extends ActionSupport implements ModelDriven<UserVO> {
     
-    private UserVO user;
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private UserVO user;
     
     public String register() {
         return "";
@@ -28,6 +33,10 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserVO>
         if(user == null){
             user = new UserVO();
         }
-        return user;
+		return user;
+	}
+    
+    public static void main(String[] args) {
+        System.out.println(-1 % 12);
     }
 }
